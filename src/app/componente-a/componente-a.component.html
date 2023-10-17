@@ -1,0 +1,22 @@
+<div class="cont-table" >
+  <table class="table table-striped rounded table-hover">
+    <thead>
+      <tr>
+        <th  scope="col">No O.C</th>
+        <th  scope="col">Proveedor</th>
+        <th  scope="col">Fecha</th>
+        <th  scope="col">Total</th>
+        <th  scope="col">Estatus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows" (click)="onRowClick(row)">
+        <td class="none">{{ row.oc }}</td>
+        <td class="none">{{ row.proveedor }}</td>
+        <td class="none">{{ row.fecha }}</td>
+        <td class="none">{{ row.total }}</td>
+        <td class="none">{{ row.estatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

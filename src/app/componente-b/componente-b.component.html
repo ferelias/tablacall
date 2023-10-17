@@ -1,0 +1,90 @@
+<!-- componente-b.component.html -->
+<div class="cont-table" *ngIf="selectedRow">
+  <table class="table table-striped rounded table-hover">
+    <thead>
+      <tr>
+        <th  scope="col">No O.C</th>
+        <th  scope="col">Proveedor</th>
+        <th  scope="col">Fecha</th>
+        <th  scope="col">Total</th>
+        <th  scope="col">Estatus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="none">{{ selectedRow.oc }}</td>
+        <td class="none">{{ selectedRow.proveedor }}</td>
+        <td class="none">{{ selectedRow.fecha }}</td>
+        <td class="none">{{ selectedRow.total }}</td>
+        <td class="none">{{ selectedRow.estatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="cont-table" *ngIf="selectedRow; else noSelection">
+  <h2>Detalles para O.C:</h2>
+  <!-- Tu tabla de detalles aquí -->
+  <table class="table table-striped rounded table-hover" *ngIf="detalles.length > 0; else noDetails">
+    <thead>
+      <tr>
+        <th>Línea</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Unidad</th>
+        <th>Precio</th>
+        <th>Importe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalle of detalles" (click)="onDetalleRowClick(detalle)">
+        <td class="none">{{ detalle.linea }}</td>
+        <td class="none">{{ detalle.descripcion }}</td>
+        <td class="none">{{ detalle.cantidad }}</td>
+        <td class="none">{{ detalle.unidad }}</td>
+        <td class="none">{{ detalle.precio }}</td>
+        <td class="none">{{ detalle.importe }}</td>
+
+
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noDetails>No hay detalles disponibles para esta O.C.</ng-template>
+</div>
+<ng-template #noSelection>Por favor, seleccione una Orden de Compra para ver los detalles.</ng-template>
+
+<!-- Aquí comienza tu nueva tabla de entradas -->
+<div *ngIf="entradas.length > 0; else noEntradas">
+  <table class="table table-striped rounded table-hover">
+    <thead>
+      <tr>
+        <th>Clave</th>
+        <th>No. entrada</th>
+        <th>Referencia</th>
+        <th>Fecha de registro</th>
+        <th>Importe</th>
+        <th>Estatus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Nota: Cambiado el método llamado en (click) a otro más específico para entradas -->
+      <tr *ngFor="let entrada of entradas" (click)="onEntradaClick(entrada)">
+        <td>{{ entrada.clave }}</td>
+        <td>{{ entrada.noentrada }}</td>
+        <td>{{ entrada.referencia }}</td>
+        <td>{{ entrada.fecha }}</td>
+        <td>{{ entrada.importe }}</td>
+        <td>{{ entrada.estatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noEntradas>No hay entradas disponibles.</ng-template>
+
+
+
+
+
+
